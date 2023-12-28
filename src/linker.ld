@@ -48,3 +48,12 @@ SECTIONS
     }
 }
 
+ stext = .;
+    .text : {
+        *(.text.entry)
+        . = ALIGN(4K);
+        strampoline = .;
+        *(.text.trampoline);
+        . = ALIGN(4K);
+        *(.text .text.*)
+    }
